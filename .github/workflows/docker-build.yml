@@ -1,0 +1,26 @@
+name: docker-build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t jenkins-custom .
+      - name: Check tools
+        run: |
+          docker run --rm --entrypoint sh jenkins-custom -c '
+            set -e
+            id -un
+            python3 --version
+            pipenv --version
+          '
