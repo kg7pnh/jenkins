@@ -1,6 +1,12 @@
 # jenkins
 
-Customized Jenkins Docker image with extra Python versions installed.
+Customized Jenkins Docker image (based on `jenkins/jenkins:lts`) with Python 3, pip, venv and pipenv preinstalled for build jobs.
+
+Build it with:
+
+```bash
+docker build -t jenkins-custom .
+```
 
 ## Releases
 
